@@ -19,7 +19,11 @@
     @foreach (var employee in  Model)
     {
       <tr scope="row">
-        <td>@employee.FirstName</td>
+        <td>
+          <a href="/employee/detail?firstName=@employee.FirstName">
+          @employee.FirstName
+          </a>
+          </td>
         <td>@employee.Surname</td>
         <td>@employee.Address</td>
         <td>@employee.Gender</td>
