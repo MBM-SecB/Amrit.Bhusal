@@ -1,0 +1,42 @@
+@model Person
+@{
+    ViewData["Title"] = "Add New";
+  }
+@* tag helpers *@
+<form asp-controller="Employee" asp-action="Add" method="POST">
+  <div class="form-group">
+    <label asp-for="FirstName">First Name</label>
+    <input type="text" class="form-control" asp-for="FirstName" aria-describedby="emailHelp" placeholder="First Name">
+    <span asp-validation-for="FirstName"></span>
+    
+   
+  </div>
+
+  <div class="form-group">
+    <label for="lastname">Last Name</label>
+    <input type="text" class="form-control" asp-for="Surname" placeholder="Last Name">
+    <span asp-validation-for="Surname"></span>
+  </div>
+
+  <div class="form-group">
+    <label asp-for="Address"><Address></Address></label>
+    <textarea type="text" class="form-control" asp-for="Address" aria-describedby="emailHelp" placeholder="Address"></textarea>
+   
+  </div>
+
+  <div class="form-group">
+    <label asp-for="Gender">Gender</label>
+    <input type="text" class="form-control" asp-for="Gender" aria-describedby="emailHelp" placeholder="Gender">
+   
+  </div>
+
+  <div class="form-group">
+    <label asp-for="Salary">First Name</label>
+    <input type="number" class="form-control" asp-for="Salary" aria-describedby="emailHelp" placeholder="Salary">
+   
+  </div>
+
+  
+
+  <button type="submit" class="btn btn-primary">Add Employees</button>
+  </form>
