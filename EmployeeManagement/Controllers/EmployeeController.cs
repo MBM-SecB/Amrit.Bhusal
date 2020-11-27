@@ -1,12 +1,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using EmployeeManagement.Data;
 
 public class EmployeeController : Controller
 {
     public ActionResult Index()
     {
-        List<Person> employees = Person.GetPerson();
+        //List<Person> employees = Person.GetPerson();
+        var db = new EMSContext();
+        var employees = db.Employees.Select(x => x.Gender == 'm');
+        
         return View(employees);
     }
     public ActionResult Detail(string firstName)

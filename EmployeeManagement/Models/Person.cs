@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations;
 
 public class Person
 {
+    
+    public int Id { get; set; }
+    
     [Required(ErrorMessage="We need first name")]
     [Display(Name ="First Name")]
     
