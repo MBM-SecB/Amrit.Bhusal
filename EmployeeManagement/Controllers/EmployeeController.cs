@@ -58,4 +58,29 @@ public class EmployeeController : Controller
 
 
     }
+    public ActionResult Edit(int id)
+    {
+        var person=db.Employees.Find(id);
+        
+
+        //var rowsAffected=db.SaveChanges();
+        
+        return View(person);
+
+
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Person person)
+    {
+        db.Employees.Attach(person);
+        
+        db.Employees.Update(person);
+        db.SaveChanges();
+        
+        return RedirectToAction(nameof(Index));
+
+
+    }
+
 }
