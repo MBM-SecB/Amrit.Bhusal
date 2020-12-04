@@ -38,7 +38,7 @@
         
         <form asp-controller="Employee" asp-action="Delete" asp-route-id="@Model[i].Id" method="POST">
           <td>
-            <input type="submit" value="Delete">
+            <input type="submit" value="Delete" onclick = "return confirm('Are you sure you wish to delete selected employee?');">
           <td>
         </form>
       </tr>

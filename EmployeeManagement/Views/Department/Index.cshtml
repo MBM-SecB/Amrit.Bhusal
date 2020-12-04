@@ -1,0 +1,46 @@
+@model List<Department>
+  @{
+    ViewData["Title"] = "Department Home";
+  }
+
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Department Name</th>
+      <th scope="col">Department Code</th>
+      <th scope="col">Description</th>
+      <th scope="col">Start Date</th>
+      <th scope="col">EDIT</th>
+      <th scope="col">Action</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    @for (int i = 0; i < Model.Count; i++)
+    {
+      <tr>
+        <td>@(i+1)</td>
+        <td>
+          @{
+            string fn = Model[i].Name;
+          }
+          <a href="/department/detail?id=@Model[i].Id">@fn</a>
+        </td>
+        <td>@Model[i].Code</td>
+        <td>@Model[i].Description</td>
+        <td>@Model[i].StartDate</td>
+        
+
+        <td><a class="btn btn-outline-primary" href="/Department/Edit?id=@Model[i].Id" method="GET">EDIT</a></td>
+        
+        <form asp-controller="Department" asp-action="Delete" asp-route-id="@Model[i].Id" method="POST">
+          <td>
+            <input type="submit" value="Delete">
+          <td>
+        </form>
+      </tr>
+    }
+  </tbody>
+</table>
