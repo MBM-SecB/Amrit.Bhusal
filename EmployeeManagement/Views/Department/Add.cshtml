@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Add New";
   }
+  
 @* tag helpers *@
 <form asp-controller="Department" asp-action="Add" method="POST">
   <div class="form-group">
@@ -30,6 +31,8 @@
     <textarea type="DateTime" class="form-control" asp-for="StartDate" aria-describedby="emailHelp" placeholder="StartDate"></textarea>
    
   </div>
+
+
 
   <button type="submit" class="btn btn-primary">Add Department</button>
 </form>

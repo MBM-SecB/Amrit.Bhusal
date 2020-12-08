@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using EmployeeManagement.Data;
+using Microsoft.EntityFrameworkCore;
+
 
 public class EmployeeController : Controller
 
@@ -15,7 +17,7 @@ public class EmployeeController : Controller
     public ActionResult Index()
     {
         //List<Person> employees = Person.GetPerson();
-       var employees =db.Employees.ToList();
+       var employees =db.Employees.Include(x => x.Department).ToList();
         
         return View(employees);
     }

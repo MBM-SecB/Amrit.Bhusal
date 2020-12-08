@@ -29,10 +29,7 @@ public class DepartmentController : Controller
     {
         return View();
     }
-    public ActionResult Delete()
-    {
-        return View();
-    }
+    
     [HttpPost]
     public ActionResult Add(Department department)
     {
@@ -45,11 +42,20 @@ public class DepartmentController : Controller
 
     }
 
-    [HttpPost]
     public ActionResult Delete(int id)
     {
         
         var department=db.Departments.Find(id);
+        return View(department);
+
+
+    }
+
+    [HttpPost]
+    public ActionResult Delete(Department department)
+    {
+        
+        db.Departments.Attach(department);
         db.Departments.Remove(department);
         db.SaveChanges();
 

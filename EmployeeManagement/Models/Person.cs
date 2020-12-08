@@ -21,6 +21,11 @@ public class Person
     public char Gender {get; set;} = 'M';
     public double Salary {get; set;}
 
+    public Department Department { get; set; }
+    
+    public int DepartmentId { get; set; }
+    
+
     
 
 

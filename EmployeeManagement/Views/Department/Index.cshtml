@@ -3,6 +3,7 @@
     ViewData["Title"] = "Department Home";
   }
 
+<h1>All Department(@Model.Count)</h1>
 
 <table class="table">
   <thead class="thead-dark">
@@ -30,16 +31,19 @@
         </td>
         <td>@Model[i].Code</td>
         <td>@Model[i].Description</td>
-        <td>@Model[i].StartDate</td>
+        <td>@Model[i].StartDate.ToString("dd/MM/yyyy")</td>
         
 
-        <td><a class="btn btn-outline-primary" href="/Department/Edit?id=@Model[i].Id" method="GET">EDIT</a></td>
+        <td>
+          <a class="btn btn-warning" href="/Department/Edit?id=@Model[i].Id" method="GET">EDIT</a>
+          <td>
+            <a class="btn btn-danger" href="/Department/Delete?id=@Model[i].Id" >Delete</a>
+
+          </td>
+          
+        </td>
         
-        <form asp-controller="Department" asp-action="Delete" asp-route-id="@Model[i].Id" method="POST">
-          <td>
-            <input type="submit" value="Delete">
-          <td>
-        </form>
+        
       </tr>
     }
   </tbody>
