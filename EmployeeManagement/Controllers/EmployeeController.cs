@@ -30,12 +30,25 @@ public class EmployeeController : Controller
     }
     public ActionResult Add()
     {
+        var departments = db.Departments.ToList();
+        ViewData["depOptions"] = departments;
         return View();
     }
+
+    [HttpPost]
+    public ActionResult Add(Person employee)  // Model binding
+    {
+        db.Employees.Add(employee);
+        db.SaveChanges();
+        return RedirectToAction(nameof(Index));
+    }
+
     public ActionResult Delete()
     {
         return View();
     }
+
+    
     [HttpPost]
     public ActionResult<bool> Add(Person person)
     {

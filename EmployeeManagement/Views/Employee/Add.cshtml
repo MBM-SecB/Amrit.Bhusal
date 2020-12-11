@@ -1,9 +1,25 @@
 @model Person
 @{
     ViewData["Title"] = "Add New";
+    var depOptions= ViewData["depOptions"] as List<Depa>;
   }
-@* tag helpers *@
+
+
 <form asp-controller="Employee" asp-action="Add" method="POST">
+  <div class="form-group">
+    <select class="custom-select" asp-for="DepartmentId">
+      <option selected>Select department</option>
+      @foreach (var dep in depOptions)
+      {
+         <option value="@dep.Id">@dep.Name</option> 
+      }
+      
+
+    </select>
+   
+  </div>
+
+
   <div class="form-group">
     <label asp-for="FirstName">First Name</label>
     <input type="text" class="form-control" asp-for="FirstName" aria-describedby="emailHelp" placeholder="First Name">

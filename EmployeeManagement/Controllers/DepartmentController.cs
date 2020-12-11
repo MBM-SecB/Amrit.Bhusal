@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using EmployeeManagement.Data;
+using Microsoft.EntityFrameworkCore;
 
 public class DepartmentController : Controller
 
@@ -20,7 +21,8 @@ public class DepartmentController : Controller
     public ActionResult Detail(int id)
     {
         
-        var department=db.Departments.Find(id);
+        var department=db.Departments.Include(x => x.Employees);
+        var departments=db.Departments.FirstOrDefault(x => x.Id ==id);
         return View(department);
         
         
