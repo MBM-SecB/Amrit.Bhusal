@@ -1,7 +1,8 @@
 @model List<Person>
-  @{
-    ViewData["Title"] = "Employee Home";
-  }
+@{
+
+  ViewData["Title"] = "Employee Home";
+}
 
 
 <table class="table">
@@ -16,16 +17,18 @@
       <th scope="col">Department Name</th>
       <th scope="col">EDIT</th>
       <th scope="col">Action</th>
-      
+
     </tr>
   </thead>
   <tbody>
     @for (int i = 0; i < Model.Count; i++)
+
     {
       <tr>
         <td>@(i+1)</td>
         <td>
           @{
+
             string fn = Model[i].FirstName;
           }
           <a href="/employee/detail?id=@Model[i].Id">@fn</a>
@@ -36,14 +39,17 @@
         <td>@Model[i].Salary</td>
         <td>@Model[i].Department.Name</td>
 
-        <td><a class="btn btn-outline-primary" href="/Employee/Edit?id=@Model[i].Id" method="GET">EDIT</a></td>
+
+        <td>
+          <a class="btn btn-warning" href="/Employee/Edit?id=@Model[i].Id">Edit</a>
+        </td>
+        <td>
+          <a class="btn btn-danger" href="/Employee/Delete?id=@Model[i].Id">Delete</a>
+        </td>
         
-        <form asp-controller="Employee" asp-action="Delete" asp-route-id="@Model[i].Id" method="POST">
-          <td>
-            <input type="submit" value="Delete" onclick = "return confirm('Are you sure you wish to delete selected employee?');">
-          <td>
-        </form>
+
       </tr>
+
     }
   </tbody>
 </table>

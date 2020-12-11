@@ -1,7 +1,6 @@
 
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using EmployeeManagement.Models;
 
 public class Person
 {

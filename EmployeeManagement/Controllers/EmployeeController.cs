@@ -36,36 +36,25 @@ public class EmployeeController : Controller
     }
 
     [HttpPost]
-    public ActionResult Add(Person employee)  // Model binding
-    {
-        db.Employees.Add(employee);
-        db.SaveChanges();
-        return RedirectToAction(nameof(Index));
-    }
-
-    public ActionResult Delete()
-    {
-        return View();
-    }
-
-    
-    [HttpPost]
-    public ActionResult<bool> Add(Person person)
+    public ActionResult Add(Person person)  // Model binding
     {
         db.Employees.Add(person);
         db.SaveChanges();
-
-        //var rowsAffected=db.SaveChanges();
         return RedirectToAction(nameof(Index));
-
-
     }
 
-    [HttpPost]
     public ActionResult Delete(int id)
     {
-        var person=db.Employees.Find(id);
-        db.Employees.Remove(person);
+        var employee = db.Employees.Find(id);
+        return View(employee);
+    }
+
+
+    [HttpPost]
+    public ActionResult Delete(Person employee)
+    {
+        db.Employees.Attach(employee);
+        db.Employees.Remove(employee);
         db.SaveChanges();
 
         //var rowsAffected=db.SaveChanges();
@@ -75,12 +64,12 @@ public class EmployeeController : Controller
     }
     public ActionResult Edit(int id)
     {
-        var person=db.Employees.Find(id);
+        var employee=db.Employees.Find(id);
         
 
         //var rowsAffected=db.SaveChanges();
         
-        return View(person);
+        return View(employee);
 
 
     }
